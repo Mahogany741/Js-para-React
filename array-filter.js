@@ -38,24 +38,42 @@ const pessoas = [
     { nome: 'Wallace', idade: 47 },
 ]
 
-const pessoas5 = [];
+const nomes = [];
+const idade50 = [];
+const ultimaLetra = [];
 
-pessoas.forEach(element => {
-    
-    console.log('Verificando nomes com 5 letras ou mais')
-    if (element.nome.length >= 5){
-        pessoas5.push(element);
-    }
+function filtrarMinimoCaracteres(tamanho){
+    pessoas.forEach(element => {
+        if (element.nome.length >= tamanho) {
+            nomes.push(element);
+        }
+    });
+    console.log(`\nPessoas com ${tamanho} caracteres ou mais:`)
+    return nomes;
+}
 
-    console.log('Verificando idade acima de 50')
-    if (element.idade > 50){
-        pessoas5.push(element);
-    }
+function filtrarMinimoIdade(idade){
+    pessoas.forEach(element => {
+        if (element.idade > idade) {
+            idade50.push(element);
+        }
+    });
+    console.log(`\nPessoas com mais de ${idade} anos:`)
+    return idade50;
+}
 
+function filtrarUltimaLetra(letra){
+    pessoas.forEach(element => {
+        ultimoCaractere = element.nome.slice(-1);
+        if (ultimoCaractere == letra) {
+            ultimaLetra.push(element);
+        }
 
-    console.log('Verificando nomes terminados em A')
-        if (element.nome.length-1 == 'a'){
-        pessoas5.push(element);
-    }
-});
+    });
+    console.log(`\nPessoas com nomes terminados na letra ${letra}:`)
+    return ultimaLetra
+}
 
+console.log(filtrarMinimoCaracteres(5));
+console.log(filtrarMinimoIdade(50));
+console.log(filtrarUltimaLetra("a"));
