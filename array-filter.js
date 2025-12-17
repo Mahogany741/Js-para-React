@@ -38,42 +38,65 @@ const pessoas = [
     { nome: 'Wallace', idade: 47 },
 ]
 
-const nomes = [];
-const idade50 = [];
-const ultimaLetra = [];
+// RESOLUÇÃO SEM ARRAY FILTER
 
-function filtrarMinimoCaracteres(tamanho){
-    pessoas.forEach(element => {
-        if (element.nome.length >= tamanho) {
-            nomes.push(element);
-        }
-    });
-    console.log(`\nPessoas com ${tamanho} caracteres ou mais:`)
-    return nomes;
-}
+    // const nomes = [];
+    // const idade50 = [];
+    // const ultimaLetra = [];
 
-function filtrarMinimoIdade(idade){
-    pessoas.forEach(element => {
-        if (element.idade > idade) {
-            idade50.push(element);
-        }
-    });
-    console.log(`\nPessoas com mais de ${idade} anos:`)
-    return idade50;
-}
+    // function filtrarMinimoCaracteres(tamanho){
+    //     pessoas.forEach(element => {
+    //         if (element.nome.length >= tamanho) {
+    //             nomes.push(element);
+    //         }
+    //     });
+    //     console.log(`\nPessoas com ${tamanho} caracteres ou mais:`)
+    //     return nomes;
+    // }
 
-function filtrarUltimaLetra(letra){
-    pessoas.forEach(element => {
-        ultimoCaractere = element.nome.slice(-1);
-        if (ultimoCaractere == letra) {
-            ultimaLetra.push(element);
-        }
+    // function filtrarMinimoIdade(idade){
+    //     pessoas.forEach(element => {
+    //         if (element.idade > idade) {
+    //             idade50.push(element);
+    //         }
+    //     });
+    //     console.log(`\nPessoas com mais de ${idade} anos:`)
+    //     return idade50;
+    // }
 
-    });
-    console.log(`\nPessoas com nomes terminados na letra ${letra}:`)
-    return ultimaLetra
-}
+    // function filtrarUltimaLetra(letra){
+    //     pessoas.forEach(element => {
+    //         ultimoCaractere = element.nome.slice(-1);
+    //         if (ultimoCaractere == letra) {
+    //             ultimaLetra.push(element);
+    //         }
 
-console.log(filtrarMinimoCaracteres(5));
-console.log(filtrarMinimoIdade(50));
-console.log(filtrarUltimaLetra("a"));
+    //     });
+    //     console.log(`\nPessoas com nomes terminados na letra ${letra}:`)
+    //     return ultimaLetra
+    // }
+
+    // console.log(filtrarMinimoCaracteres(5));
+    // console.log(filtrarMinimoIdade(50));
+    // console.log(filtrarUltimaLetra("a"));
+
+// Resolução com FILTER (forma padrão de função)
+
+// const pessoasComNomeGrande = pessoas.filter(function(obj){
+//     return obj.nome.length >= 5;
+// });
+// console.log(pessoasComNomeGrande)
+
+// Resolução com FILTER (arrow function)
+
+// Retorne as pessoas que tem o nome com 5 letras ou mais
+const pessoasComNomeGrande = pessoas.filter(obj => obj.nome.length >= 5);
+console.log("Nomes com 5 letras ou mais: \n", pessoasComNomeGrande);
+
+// Retorne as pessoas com mais de 50 anos
+const idadeMais50 = pessoas.filter(valor => valor.idade > 50);
+console.log("\nPessoas com idade superior a 50: \n",idadeMais50);
+
+// Retorne as pessoas cujo nome termina com a
+const nomeTerminaComA = pessoas.filter(obj => obj.nome.slice(-1) == "a");
+console.log("\nNomes terminado com A: \n",nomeTerminaComA)
